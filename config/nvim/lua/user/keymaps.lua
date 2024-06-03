@@ -36,8 +36,14 @@ nnoremap("<leader>'", "<C-^>", { desc = "Switch to last buffer" })
 -- Save with leader key
 nnoremap("<leader>w", "<cmd>w<cr>", { silent = false })
 
--- Save and Quit with leader key
-nnoremap("<leader>z", "<cmd>wq<cr>", { silent = false })
+nnoremap(
+	"<leader>z", function()
+	require("zen-mode").toggle({
+		window = {
+			width = 0.85, -- width will be 85% of the editor width
+		},
+	})
+  end)
 
 nnoremap("<C-c>", "<cmd> %y+ <CR>", { desc = "Copy whole file" })
 
