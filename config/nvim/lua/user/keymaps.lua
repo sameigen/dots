@@ -36,14 +36,13 @@ nnoremap("<leader>'", "<C-^>", { desc = "Switch to last buffer" })
 -- Save with leader key
 nnoremap("<leader>w", "<cmd>w<cr>", { silent = false })
 
-nnoremap(
-	"<leader>z", function()
+nnoremap("<leader>z", function()
 	require("zen-mode").toggle({
 		window = {
 			width = 0.85, -- width will be 85% of the editor width
 		},
 	})
-  end)
+end)
 
 nnoremap("<C-c>", "<cmd> %y+ <CR>", { desc = "Copy whole file" })
 
@@ -170,6 +169,9 @@ nnoremap("gx", ":sil !open <cWORD><cr>", { silent = true })
 
 -- TSC autocommand keybind to run TypeScripts tsc
 nnoremap("<leader>tc", ":TSC<cr>", { desc = "[T]ypeScript [C]ompile" })
+
+nnoremap("<leader>zo", require("ufo").openAllFolds)
+nnoremap("<leader>zc", require("ufo").closeAllFolds)
 
 -- Harpoon keybinds --
 -- Open harpoon ui
