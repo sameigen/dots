@@ -114,6 +114,7 @@ alias pw="cat /Users/sam/.mst | pbcopy"
 alias ssh="kitty +kitten ssh"
 alias screenshot="silicon --from-clipboard -l rs --to-clipboard"
 alias vim="nvim"
+alias db="gobang"
 alias work="timer 40m && terminal-notifier -message 'Pomodoro'\
         -title 'Work timer is up! Take a Break 😊'\
         -appIcon '~/Pictures/pumpkin.png'\
@@ -124,7 +125,6 @@ alias rest="timer 10m && terminal-notifier -message 'Pomodoro'\
         -appIcon '~/Pictures/pumpkin.png'\
         -sound Crystal"
 alias python="python3"
-alias zoom="echo 'https://us02web.zoom.us/j/5803472310?pwd=VEcyaWNUOTdhdGxzdmFxU2FaUlRUZz09' | pbcopy"
 
 [ -f "/Users/sam/.ghcup/env" ] && source "/Users/sam/.ghcup/env" # ghcup-env
 # bun completions
@@ -134,3 +134,6 @@ alias zoom="echo 'https://us02web.zoom.us/j/5803472310?pwd=VEcyaWNUOTdhdGxzdmFxU
 export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
 DISABLE_UNTRACKED_FILES_DIRTY="true"
+
+# added by Snowflake SnowSQL installer v1.2
+export PATH=/Applications/SnowSQL.app/Contents/MacOS:$PATH

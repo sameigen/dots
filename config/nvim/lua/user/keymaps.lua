@@ -7,6 +7,7 @@ local harpoon_ui = require("harpoon.ui")
 local harpoon_mark = require("harpoon.mark")
 local conform = require("conform")
 local utils = require("user.utils")
+local splits = require("smart-splits")
 
 local M = {}
 
@@ -14,21 +15,10 @@ local M = {}
 nnoremap("<space>", "<nop>")
 
 -- better kitty navigation
-nnoremap("<C-j>", function()
-	require("smart-splits").move_curser_down()
-end)
-
-nnoremap("<C-k>", function()
-	require("smart-splits").move_curser_up()
-end)
-
-nnoremap("<C-l>", function()
-	require("smart-splits").move_curser_right()
-end)
-
-nnoremap("<C-h>", function()
-	require("smart-splits").move_curser_left()
-end)
+vim.keymap.set("n", "<C-h>", require("smart-splits").move_cursor_left)
+vim.keymap.set("n", "<C-j>", require("smart-splits").move_cursor_down)
+vim.keymap.set("n", "<C-k>", require("smart-splits").move_cursor_up)
+vim.keymap.set("n", "<C-l>", require("smart-splits").move_cursor_right)
 
 -- Swap between last two buffers
 nnoremap("<leader>'", "<C-^>", { desc = "Switch to last buffer" })
