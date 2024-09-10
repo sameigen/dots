@@ -1,9 +1,8 @@
 return {
-	{
-		"ronisbr/nano-theme.nvim",
-		init = function()
-			vim.o.background = "light"
-			vim.cmd.colorscheme("nano-theme")
-		end,
-	},
+	"slugbyte/lackluster.nvim",
+	lazy = false,
+	priority = 1000,
+	init = function()
+		vim.cmd.colorscheme("lackluster-hack")
+	end,
 }
