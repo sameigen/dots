@@ -20,6 +20,18 @@ vim.keymap.set("n", "<C-j>", require("smart-splits").move_cursor_down)
 vim.keymap.set("n", "<C-k>", require("smart-splits").move_cursor_up)
 vim.keymap.set("n", "<C-l>", require("smart-splits").move_cursor_right)
 
+vim.api.nvim_create_user_command("Format", function(args)
+  local range = nil
+  if args.count ~= -1 then
+    local end_line = vim.api.nvim_buf_get_lines(0, args.line2 - 1, args.line2, true)[1]
+    range = {
+      start = { args.line1, 0 },
+      ["end"] = { args.line2, end_line:len() },
+    }
+  end
+  require("conform").format({ async = true, lsp_format = "fallback", range = range })
+end, { range = true })
+
 -- Swap between last two buffers
 nnoremap("<leader>'", "<C-^>", { desc = "Switch to last buffer" })
 
@@ -147,9 +159,7 @@ nnoremap("<leader>cc", ":cclose<cr>zz")
 nnoremap("<leader>=", "<C-w>=")
 
 -- Press leader f to format
-nnoremap("<leader>fm", function()
-	conform.format({ async = true, lsp_fallback = true })
-end, { desc = "Format the current buffer" })
+nnoremap("<leader>fm", ":Format<CR>", { desc = "Format the current buffer" })
 
 -- Press leader rw to rotate open windows
 nnoremap("<leader>rw", ":RotateWindows<cr>", { desc = "[R]otate [W]indows" })

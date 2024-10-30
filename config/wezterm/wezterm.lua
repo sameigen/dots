@@ -7,7 +7,6 @@ local config = wezterm.config_builder()
 config.use_fancy_tab_bar = false
 config.window_decorations = "RESIZE"
 config.show_new_tab_button_in_tab_bar = false
-show_tab_index_in_tab_bar = false
 
 -- colors
 config.color_schemes = lackluster
@@ -24,7 +23,7 @@ config.colors = {
 			intensity = "Bold",
 		},
 		inactive_tab = {
-			bg_color = "#555555",
+			bg_color = lackluster_scheme.background,
 			fg_color = lackluster_scheme.foreground,
 			intensity = "Half",
 		},

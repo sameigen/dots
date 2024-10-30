@@ -85,7 +85,8 @@ return {
 						format = false,
 					},
 				},
-				tsserver = {
+				biome = {},
+				ts_ls = {
 					handlers = {
 						["textDocument/publishDiagnostics"] = vim.lsp.with(
 							tsserver_on_publish_diagnostics_override,
@@ -115,6 +116,7 @@ return {
 				},
 				marksman = {},
 				pyright = {},
+				ruff_lsp = {},
 				sqlls = {},
 				tailwindcss = {},
 				yamlls = {},
@@ -175,21 +177,27 @@ return {
 	},
 	{
 		"stevearc/conform.nvim",
-		event = { "BufWritePre" },
-		cmd = { "ConformInfo" },
-		opts = {
-			notify_on_error = false,
-			format_after_save = {
-				async = true,
-				timeout_ms = 500,
-				lsp_fallback = true,
-			},
-			formatters_by_ft = {
-				javascript = { { "prettierd", "prettier" } },
-				typescript = { { "prettierd", "prettier" } },
-				typescriptreact = { { "prettierd", "prettier" } },
-				lua = { "stylua" },
-			},
+		formatters_by_ft = {
+			javascript = { { "biome", "prettier" } },
+			typescript = { { "biome", "prettier" } },
+			typescriptreact = { { "biome", "prettier" } },
+			lua = { "stylua" },
 		},
+		-- event = { "BufWritePre" },
+		-- cmd = { "ConformInfo" },
+		-- opts = {
+		-- 	notify_on_error = false,
+		-- 	format_on_save = {
+		-- 		timeout_ms = 500,
+		-- 		lsp_fallback = true,
+		-- 	},
+		-- 	formatters_by_ft = {
+		-- 		javascript = { { "biome", "prettier" } },
+		-- 		typescript = { { "biome", "prettier" } },
+		-- 		typescriptreact = { { "biome", "prettier" } },
+		-- 		lua = { "stylua" },
+		-- 	},
+		-- 	stop_after_first = true,
+		-- },
 	},
 }
