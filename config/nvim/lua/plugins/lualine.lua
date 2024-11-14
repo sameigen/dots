@@ -40,7 +40,7 @@ return {
 
 			require("lualine").setup({
 				options = {
-					theme = "lackluster",
+					theme = "monoglow",
 					globalstatus = true,
 					component_separators = { left = "", right = "" },
 					section_separators = { left = "█", right = "█" },

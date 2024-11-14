@@ -1,8 +1,8 @@
 return {
-	"slugbyte/lackluster.nvim",
+  "wnkz/monoglow.nvim",
 	lazy = false,
 	priority = 1000,
 	init = function()
-		vim.cmd.colorscheme("lackluster-hack")
+		vim.cmd.colorscheme("monoglow")
 	end,
 }
