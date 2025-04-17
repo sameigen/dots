@@ -40,6 +40,9 @@ return {
 						".sl",
 						"_build",
 						".next",
+						"lazy-lock.json",
+						"ios/",
+						"android/"
 					},
 					hidden = true,
 				},

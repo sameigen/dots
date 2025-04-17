@@ -14,15 +14,15 @@ local M = {}
 nnoremap("<space>", "<nop>")
 
 vim.api.nvim_create_user_command("Format", function(args)
-  local range = nil
-  if args.count ~= -1 then
-    local end_line = vim.api.nvim_buf_get_lines(0, args.line2 - 1, args.line2, true)[1]
-    range = {
-      start = { args.line1, 0 },
-      ["end"] = { args.line2, end_line:len() },
-    }
-  end
-  require("conform").format({ async = true, lsp_format = "fallback", range = range })
+	local range = nil
+	if args.count ~= -1 then
+		local end_line = vim.api.nvim_buf_get_lines(0, args.line2 - 1, args.line2, true)[1]
+		range = {
+			start = { args.line1, 0 },
+			["end"] = { args.line2, end_line:len() },
+		}
+	end
+	require("conform").format({ async = true, lsp_format = "fallback", range = range })
 end, { range = true })
 
 -- Swap between last two buffers
@@ -66,17 +66,6 @@ nnoremap("S", function()
 	local keys = vim.api.nvim_replace_termcodes(cmd, true, false, true)
 	vim.api.nvim_feedkeys(keys, "n", false)
 end)
-
--- Open Spectre for global find/replace
-nnoremap("<leader>S", function()
-	require("spectre").toggle()
-end)
-
--- Open Spectre for global find/replace for the word under the cursor in normal mode
--- TODO Fix, currently being overriden by Telescope
-nnoremap("<leader>sw", function()
-	require("spectre").open_visual({ select_word = true })
-end, { desc = "Search current word" })
 
 -- Press 'H', 'L' to jump to start/end of a line (first/last char)
 nnoremap("L", "$")
@@ -210,7 +199,6 @@ end)
 
 -- Git keymaps --
 nnoremap("<leader>gb", ":Gitsigns toggle_current_line_blame<cr>")
-nnoremap("<leader>lg", ":LazyGit<cr>")
 nnoremap("<leader>gf", function()
 	local cmd = {
 		"sort",
@@ -286,18 +274,14 @@ M.map_lsp_keybinds = function(buffer_number)
 
 	-- See `:help K` for why this keymap
 	nnoremap("K", vim.lsp.buf.hover, { desc = "LSP: Hover Documentation", buffer = buffer_number })
-	nnoremap("<leader>k", vim.lsp.buf.signature_help, { desc = "LSP: Signature Documentation", buffer = buffer_number })
+	nnoremap("<leader>k", vim.lsp.buf.signature_help,
+		{ desc = "LSP: Signature Documentation", buffer = buffer_number })
 	inoremap("<C-k>", vim.lsp.buf.signature_help, { desc = "LSP: Signature Documentation", buffer = buffer_number })
 
 	-- Lesser used LSP functionality
 	nnoremap("gD", vim.lsp.buf.declaration, { desc = "LSP: [G]oto [D]eclaration", buffer = buffer_number })
 	nnoremap("td", vim.lsp.buf.type_definition, { desc = "LSP: [T]ype [D]efinition", buffer = buffer_number })
 end
-
--- Open Copilot panel
-nnoremap("<leader>oc", function()
-	require("copilot.panel").open({})
-end, { desc = "[O]pen [C]opilot panel" })
 
 -- Insert --
 -- Map jj to <esc>

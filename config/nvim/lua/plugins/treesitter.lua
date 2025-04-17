@@ -25,6 +25,7 @@ return {
 					"python",
 					"typescript",
 					"vim",
+					"go",
 				},
 				sync_install = false,
 				highlight = {
