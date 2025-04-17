@@ -123,7 +123,7 @@ return {
 			}
 
 			local formatters = {
-				prettierd = {},
+				biome = {},
 				stylua = {},
 			}
 
