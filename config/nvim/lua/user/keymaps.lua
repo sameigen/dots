@@ -7,18 +7,11 @@ local harpoon_ui = require("harpoon.ui")
 local harpoon_mark = require("harpoon.mark")
 local conform = require("conform")
 local utils = require("user.utils")
-local splits = require("smart-splits")
 
 local M = {}
 
 -- Normal --
 nnoremap("<space>", "<nop>")
-
--- better kitty navigation
-vim.keymap.set("n", "<C-h>", require("smart-splits").move_cursor_left)
-vim.keymap.set("n", "<C-j>", require("smart-splits").move_cursor_down)
-vim.keymap.set("n", "<C-k>", require("smart-splits").move_cursor_up)
-vim.keymap.set("n", "<C-l>", require("smart-splits").move_cursor_right)
 
 vim.api.nvim_create_user_command("Format", function(args)
   local range = nil

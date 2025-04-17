@@ -116,7 +116,7 @@ return {
 				},
 				marksman = {},
 				pyright = {},
-				ruff_lsp = {},
+				ruff = {},
 				sqlls = {},
 				tailwindcss = {},
 				yamlls = {},

@@ -9,8 +9,10 @@ return {
 		config = function()
 			local wilder = require("wilder")
 
+			local mono = require("rose-pine.palette")
+
 			-- Create a highlight group for the popup menu
-			local text_highlight = wilder.make_hl("WilderText", { { a = 1 }, { a = 1 }, { foreground = "#DEEEED" } })
+			local text_highlight = wilder.make_hl("WilderText", { { a = 1 }, { a = 1 }, { foreground = mono.gold } })
 			local gray_highlight = wilder.make_hl("WilderMauve", { { a = 1 }, { a = 1 }, { foreground = "#7788AA" } })
 
 			-- Enable wilder when pressing :, / or ?
