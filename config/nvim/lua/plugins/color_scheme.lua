@@ -4,8 +4,8 @@ return {
   priority = 1000,
   config = function()
     require("rose-pine").setup({
-      variant = "dawn",      -- auto, main, moon, or dawn
-      dark_variant = "main", -- main, moon, or dawn
+      variant = "moon",      -- auto, main, moon, or dawn
+      dark_variant = "moon", -- main, moon, or dawn
       dim_inactive_windows = false,
       extend_background_behind_borders = true,
 
@@ -52,36 +52,36 @@ return {
         h6 = "foam",
       },
 
-      palette = {
-        -- Override the builtin palette per variant
-        -- moon = {
-        --     base = '#18191a',
-        --     overlay = '#363738',
-        -- },
-      },
-
-      -- NOTE: Highlight groups are extended (merged) by default. Disable this
-      -- per group via `inherit = false`
-      highlight_groups = {
-        -- Comment = { fg = "foam" },
-        -- StatusLine = { fg = "love", bg = "love", blend = 15 },
-        -- VertSplit = { fg = "muted", bg = "muted" },
-        -- Visual = { fg = "base", bg = "text", inherit = false },
-      },
-
-      before_highlight = function(group, highlight, palette)
-        -- Disable all undercurls
-        -- if highlight.undercurl then
-        --     highlight.undercurl = false
-        -- end
-        --
-        -- Change palette colour
-        -- if highlight.fg == palette.pine then
-        --     highlight.fg = palette.foam
-        -- end
-      end,
+      -- palette = {
+      --   -- Override the builtin palette per variant
+      --   -- moon = {
+      --   --     base = '#18191a',
+      --   --     overlay = '#363738',
+      --   -- },
+      -- },
+      --
+      -- -- NOTE: Highlight groups are extended (merged) by default. Disable this
+      -- -- per group via `inherit = false`
+      -- highlight_groups = {
+      --   -- Comment = { fg = "foam" },
+      --   -- StatusLine = { fg = "love", bg = "love", blend = 15 },
+      --   -- VertSplit = { fg = "muted", bg = "muted" },
+      --   -- Visual = { fg = "base", bg = "text", inherit = false },
+      -- },
+      --
+      -- before_highlight = function(group, highlight, palette)
+      --   -- Disable all undercurls
+      --   -- if highlight.undercurl then
+      --   --     highlight.undercurl = false
+      --   -- end
+      --   --
+      --   -- Change palette colour
+      --   -- if highlight.fg == palette.pine then
+      --   --     highlight.fg = palette.foam
+      --   -- end
+      -- end,
     })
 
-    vim.cmd("colorscheme rose-pine-dawn")
+    vim.cmd("colorscheme rose-pine-moon")
   end
 }

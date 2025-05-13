@@ -79,12 +79,6 @@ return {
 				-- LSP Servers
 				bashls = {},
 				cssls = {},
-				eslint = {
-					cmd = { "vscode-eslint-language-server", "--stdio", "--max-old-space-size=12288" },
-					settings = {
-						format = false,
-					},
-				},
 				biome = {},
 				ts_ls = {
 					handlers = {
@@ -178,9 +172,9 @@ return {
 	{
 		"stevearc/conform.nvim",
 		formatters_by_ft = {
-			javascript = { { "biome", "prettier" } },
-			typescript = { { "biome", "prettier" } },
-			typescriptreact = { { "biome", "prettier" } },
+			javascript = { { "biome" } },
+			typescript = { { "biome" } },
+			typescriptreact = { { "biome" } },
 			lua = { "stylua" },
 		},
 		-- event = { "BufWritePre" },
