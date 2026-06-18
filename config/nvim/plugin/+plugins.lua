@@ -131,8 +131,11 @@ require('fzf-lua').setup({
 })
 
 -- NOTE: must have mysql-client installed -- if issues, look into native-password
+vim.g.db_ui_use_nerd_fonts = 1
+-- DB connections (with credentials) live in plugin/dbs.lua, which is git-ignored.
+-- Copy plugin/dbs.lua.example -> plugin/dbs.lua and fill in. nvim auto-sources plugin/.
 
 -- color
 vim.g.zenbones_compat = 1
-vim.cmd.colorscheme("zenbones")
-vim.opt.background = "light"
+vim.cmd.colorscheme("zenburned")
+vim.opt.background = "dark"

@@ -1,0 +1,2 @@
+# Local secrets — never commit (repo is public)
+config/nvim/plugin/dbs.lua

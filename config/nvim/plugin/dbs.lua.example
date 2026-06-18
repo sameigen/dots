@@ -1,0 +1,8 @@
+-- Template. Copy this to plugin/dbs.lua (git-ignored) and fill in real credentials.
+-- nvim auto-sources every *.lua in plugin/, so this sets vim.g.dbs for vim-dadbod-ui.
+vim.g.dbs = {
+    { name = 'supabase-dev',  url = 'postgresql://USER:PASSWORD@HOST:5432/postgres' },
+    { name = 'supabase-prod', url = 'postgresql://USER:PASSWORD@HOST:5432/postgres' },
+    { name = 'rds-prod',      url = 'mysql://USER:PASSWORD@HOST/DBNAME' },
+    { name = 'rds-dev',       url = 'mysql://USER:PASSWORD@HOST/DBNAME' },
+}
