@@ -1,0 +1,151 @@
+# GlazeWM — canonical config (source of truth in ~/dots). Deploy: copy to %USERPROFILE%\.glzr\glazewm\config.yaml
+# Modifier = Win (lwin) to match Cmd (macOS) / Super (Linux i3). See ~/dots/keybindings.md.
+# Games/anti-cheat/remote windows are IGNORED so the WM never tiles a fullscreen Vanguard/Jagex window.
+
+general:
+  startup_commands: ['shell-exec zebar']
+  config_reload_commands: []
+  focus_follows_cursor: false
+  toggle_workspace_on_refocus: false
+  cursor_jump:
+    enabled: true
+    trigger: 'monitor_focus'
+  hide_method: 'cloak'
+  show_all_in_taskbar: false
+
+gaps:
+  scale_factor: 1.0
+  inner_gap: '8px'
+  outer_gap:
+    top: '8px'
+    right: '8px'
+    bottom: '8px'
+    left: '8px'
+
+window_effects:
+  focused_window:
+    border:
+      enabled: true
+      color: '#b77e64'   # zenburned clay
+  other_windows:
+    border:
+      enabled: true
+      color: '#5a5149'
+
+window_behavior:
+  initial_state: 'tiling'
+  state_defaults:
+    floating:
+      centered: true
+      shown_on_top: false
+    fullscreen:
+      maximized: false
+      shown_on_top: false
+
+workspaces:
+  - name: '1'
+  - name: '2'
+  - name: '3'
+  - name: '4'
+  - name: '5'
+  - name: '6'
+
+window_rules:
+  - commands: ['ignore']
+    match:
+      - window_process: { equals: 'zebar' }
+  # ANTI-CHEAT / GAMES / REMOTE — never tile
+  - commands: ['ignore']
+    match:
+      - window_process: { equals: 'VALORANT-Win64-Shipping' }
+      - window_process: { equals: 'LeagueClient' }
+      - window_process: { equals: 'League of Legends' }
+      - window_process: { equals: 'RiotClientServices' }
+      - window_process: { equals: 'JagexLauncher' }
+      - window_process: { equals: 'rs2client' }
+      - window_process: { equals: 'RuneLite' }
+      - window_process: { equals: 'osclient' }
+      - window_process: { equals: 'nxplayer' }   # NoMachine
+
+keybindings:
+  # --- focus (Win+HJKL) — crosses your stacked monitors via up/down ---
+  - commands: ['focus --direction left']
+    bindings: ['lwin+h']
+  - commands: ['focus --direction down']
+    bindings: ['lwin+j']
+  - commands: ['focus --direction up']
+    bindings: ['lwin+k']
+  - commands: ['focus --direction right']
+    bindings: ['lwin+l']
+
+  # --- move window (Win+Shift+HJKL) — up/down throws it to the other stacked monitor ---
+  - commands: ['move --direction left']
+    bindings: ['lwin+shift+h']
+  - commands: ['move --direction down']
+    bindings: ['lwin+shift+j']
+  - commands: ['move --direction up']
+    bindings: ['lwin+shift+k']
+  - commands: ['move --direction right']
+    bindings: ['lwin+shift+l']
+
+  # --- maximize: M = almost (float-centered), N = full (fullscreen) ---
+  - commands: ['toggle-floating --centered']
+    bindings: ['lwin+shift+m']
+  - commands: ['toggle-fullscreen']
+    bindings: ['lwin+shift+n']
+
+  # --- resize ---
+  - commands: ['resize --width -2%']
+    bindings: ['lwin+u']
+  - commands: ['resize --width +2%']
+    bindings: ['lwin+p']
+  - commands: ['resize --height +2%']
+    bindings: ['lwin+i']
+  - commands: ['resize --height -2%']
+    bindings: ['lwin+o']
+
+  # --- layout ---
+  - commands: ['toggle-tiling-direction']
+    bindings: ['lwin+v']
+  - commands: ['toggle-floating --centered']
+    bindings: ['lwin+shift+space']
+  - commands: ['close']
+    bindings: ['lwin+shift+q']
+
+  # --- terminal (Win+Enter -> Windows Terminal) ---
+  - commands: ['shell-exec wt']
+    bindings: ['lwin+enter']
+
+  # --- workspaces: focus 1-6 ---
+  - commands: ['focus --workspace 1']
+    bindings: ['lwin+1']
+  - commands: ['focus --workspace 2']
+    bindings: ['lwin+2']
+  - commands: ['focus --workspace 3']
+    bindings: ['lwin+3']
+  - commands: ['focus --workspace 4']
+    bindings: ['lwin+4']
+  - commands: ['focus --workspace 5']
+    bindings: ['lwin+5']
+  - commands: ['focus --workspace 6']
+    bindings: ['lwin+6']
+
+  # --- workspaces: send window to 1-6 ---
+  - commands: ['move --workspace 1', 'focus --workspace 1']
+    bindings: ['lwin+shift+1']
+  - commands: ['move --workspace 2', 'focus --workspace 2']
+    bindings: ['lwin+shift+2']
+  - commands: ['move --workspace 3', 'focus --workspace 3']
+    bindings: ['lwin+shift+3']
+  - commands: ['move --workspace 4', 'focus --workspace 4']
+    bindings: ['lwin+shift+4']
+  - commands: ['move --workspace 5', 'focus --workspace 5']
+    bindings: ['lwin+shift+5']
+  - commands: ['move --workspace 6', 'focus --workspace 6']
+    bindings: ['lwin+shift+6']
+
+  # --- WM control ---
+  - commands: ['wm-reload-config']
+    bindings: ['lwin+shift+r']
+  - commands: ['wm-toggle-pause']           # pause tiling during ranked games
+    bindings: ['lwin+shift+p']
